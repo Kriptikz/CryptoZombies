@@ -37,7 +37,7 @@ contract ZombieFeeding is ZombieFactory
         return (_zombie.readyTime <= now);
     }
 
-    function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) public
+    function feedAndMultiply(uint _zombieId, uint _targetDna, string memory _species) internal
     {
         require(msg.sender == zombieToOwner[_zombieId]);
 
