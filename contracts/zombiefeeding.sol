@@ -43,6 +43,8 @@ contract ZombieFeeding is ZombieFactory
 
         Zombie storage myZombie = zombies[_zombieId];
 
+        require(_isReady(myZombie));
+
         _targetDna = _targetDna % dnaModulus;
 
         uint newDna = (myZombie.dna + _targetDna) / 2;
@@ -53,6 +55,7 @@ contract ZombieFeeding is ZombieFactory
         }
 
         _createZombie("NoName", newDna);
+        _triggerCooldown(myZombie);
     }
 
     function feedOnKitty(uint _zombieId, uint _kittyId) public 
