@@ -1,0 +1,1763 @@
+{
+  "contractName": "ZombieOwnership",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_approved",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Approval",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "zombieId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "dna",
+          "type": "uint256"
+        }
+      ],
+      "name": "NewZombie",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_zombieId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_targetId",
+          "type": "uint256"
+        }
+      ],
+      "name": "attack",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_zombieId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_newDna",
+          "type": "uint256"
+        }
+      ],
+      "name": "changeDna",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_zombieId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_newName",
+          "type": "string"
+        }
+      ],
+      "name": "changeName",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        }
+      ],
+      "name": "createRandomZombie",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_zombieId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_kittyId",
+          "type": "uint256"
+        }
+      ],
+      "name": "feedOnKitty",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "getZombiesByOwner",
+      "outputs": [
+        {
+          "internalType": "uint256[]",
+          "name": "",
+          "type": "uint256[]"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_zombieId",
+          "type": "uint256"
+        }
+      ],
+      "name": "levelUp",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_address",
+          "type": "address"
+        }
+      ],
+      "name": "setKittyContractAddress",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_fee",
+          "type": "uint256"
+        }
+      ],
+      "name": "setLevelUpFee",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "zombieToOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "zombies",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "dna",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint32",
+          "name": "level",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "readyTime",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint16",
+          "name": "winCount",
+          "type": "uint16"
+        },
+        {
+          "internalType": "uint16",
+          "name": "lossCount",
+          "type": "uint16"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "_to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "transferFrom",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_approved",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "approve",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_approved\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"zombieId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"dna\",\"type\":\"uint256\"}],\"name\":\"NewZombie\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_approved\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_zombieId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_targetId\",\"type\":\"uint256\"}],\"name\":\"attack\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_zombieId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_newDna\",\"type\":\"uint256\"}],\"name\":\"changeDna\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_zombieId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_newName\",\"type\":\"string\"}],\"name\":\"changeName\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"}],\"name\":\"createRandomZombie\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_zombieId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_kittyId\",\"type\":\"uint256\"}],\"name\":\"feedOnKitty\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"getZombiesByOwner\",\"outputs\":[{\"internalType\":\"uint256[]\",\"name\":\"\",\"type\":\"uint256[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_zombieId\",\"type\":\"uint256\"}],\"name\":\"levelUp\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"ownerOf\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_address\",\"type\":\"address\"}],\"name\":\"setKittyContractAddress\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_fee\",\"type\":\"uint256\"}],\"name\":\"setLevelUpFee\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"_from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"zombieToOwner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"zombies\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"dna\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"level\",\"type\":\"uint32\"},{\"internalType\":\"uint32\",\"name\":\"readyTime\",\"type\":\"uint32\"},{\"internalType\":\"uint16\",\"name\":\"winCount\",\"type\":\"uint16\"},{\"internalType\":\"uint16\",\"name\":\"lossCount\",\"type\":\"uint16\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"return\":\"true if `msg.sender` is the owner of the contract.\"},\"owner()\":{\"return\":\"the address of the owner.\"},\"renounceOwnership()\":{\"details\":\"Allows the current owner to relinquish control of the contract.\"},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"The address to transfer ownership to.\"}}}},\"userdoc\":{\"methods\":{\"renounceOwnership()\":{\"notice\":\"Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore.\"}}}},\"settings\":{\"compilationTarget\":{\"/D/Dev/Projects/CryptoZombies/contracts/zombieownership.sol\":\"ZombieOwnership\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/D/Dev/Projects/CryptoZombies/contracts/erc721.sol\":{\"keccak256\":\"0x4c1751fb74da942f6ca730f7c73079fd46c94703aee2425df3e388ac0bc4025e\",\"urls\":[\"bzz-raw://0d996aa00e597a7e35f4a26819fdba445ad9b63e649ce037daf20d19598a0e94\",\"dweb:/ipfs/QmPTPnMEEkuZ5XX1QXuoZwuU4pPDERq37WhYouRFUmaeQa\"]},\"/D/Dev/Projects/CryptoZombies/contracts/ownable.sol\":{\"keccak256\":\"0xdcb6bb8ab50ff55dad2a5c292050e67a8ebcdd3baa6b97527f0e3ecc3af42f84\",\"urls\":[\"bzz-raw://3fe77d5cc42cca6fadaa8ddbf4619e9b27cfe9a95c7905b9a212c01117edef75\",\"dweb:/ipfs/QmdtVipEv1iJRxedUYmU1mm1ysAD1Lxbrg2rQc1wyp8KBs\"]},\"/D/Dev/Projects/CryptoZombies/contracts/zombieattack.sol\":{\"keccak256\":\"0xf417736be6aaa0189460637ddeb8f3f3491cd540ad92f9204211271cfd8b0f01\",\"urls\":[\"bzz-raw://fa06b467387d1a77fa5be477be457bde70e92a2e56aa4de04d9b7aa9be066e81\",\"dweb:/ipfs/QmWNWWRjHz6jjeVf85fAUL5X4JJqBTtRboeJmBLRwovXMi\"]},\"/D/Dev/Projects/CryptoZombies/contracts/zombiefactory.sol\":{\"keccak256\":\"0x5e8cac3574a431905e17275881fb25decf56e5c3c32335e90dfa6033069fb94e\",\"urls\":[\"bzz-raw://06b85f696292ac8aa488d0f66847fb11511fecca75068ff77a9b0fde39f8cf22\",\"dweb:/ipfs/QmVQDWJM1mrSXinJgnT7HXvei4XVevJo8qCjUtWfSkR8eC\"]},\"/D/Dev/Projects/CryptoZombies/contracts/zombiefeeding.sol\":{\"keccak256\":\"0x40a442f2fbd1840d905ec20dd1669f5e52b23aa1d2a20fad78c7fd78143c2e15\",\"urls\":[\"bzz-raw://b9f1c1f292238592b72836b47ff8a8c8083741b36b940b145880d5ba797ab5fb\",\"dweb:/ipfs/QmfLuE94xZKegp4ddZWEF9W4kK5nChBpSDiST5qjBFCKLs\"]},\"/D/Dev/Projects/CryptoZombies/contracts/zombiehelper.sol\":{\"keccak256\":\"0x339f406cd4e99585df9c7d624314855916af32f66cf1e0e304badccb45f97526\",\"urls\":[\"bzz-raw://a50a15f8e5d5a751c48e177bc9efa2aa4efc03231cea257d9061d90900987f11\",\"dweb:/ipfs/Qme9BCjrg2L3e1sAjprwSCMsvcTJvfsCigHTvW7iU74zvX\"]},\"/D/Dev/Projects/CryptoZombies/contracts/zombieownership.sol\":{\"keccak256\":\"0xd081cadcd0f49f512913bb62477107fd1ca9eaefa2ece0d405d6c1deb835648e\",\"urls\":[\"bzz-raw://26b4dd43bbc2396c370b1ff6be210bd111812c7101847bbff106fc0329d59bac\",\"dweb:/ipfs/QmcHqveZEJMEX9KABAxzAeKd1kcRcbvpXPbEDhmp1Mmj4y\"]}},\"version\":1}",
+  "bytecode": "0x60806040526010600155600154600a0a6002556201518060035566038d7ea4c6800060085560006009556046600a55336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16600073ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3611ca1806100f96000396000f3fe60806040526004361061011f5760003560e01c80636352211e116100a05780638f32d59b116100645780638f32d59b14610736578063c39cbef114610765578063ccf670f8146107f5578063e1fa763814610830578063f2fde38b146108755761011f565b80636352211e1461052057806370a082311461059b578063715018a6146106005780637bff0a01146106175780638da5cb5b146106df5761011f565b80633ccfd60b116100e75780633ccfd60b146103525780634412e10414610369578063528b7b8f1461040f5780635f4623f11461048a5780635faf2880146104db5761011f565b8063095ea7b3146101245780630ce90ec21461017257806317a7f4cc146101a05780632052465e146101e557806323b872dd146102e4575b600080fd5b6101706004803603604081101561013a57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506108c6565b005b61019e6004803603602081101561018857600080fd5b81019080803590602001909291905050506108ca565b005b3480156101ac57600080fd5b506101e3600480360360408110156101c357600080fd5b810190808035906020019092919080359060200190929190505050610932565b005b3480156101f157600080fd5b5061021e6004803603602081101561020857600080fd5b8101908080359060200190929190505050610abd565b60405180806020018781526020018663ffffffff1663ffffffff1681526020018563ffffffff1663ffffffff1681526020018461ffff1661ffff1681526020018361ffff1661ffff168152602001828103825288818151815260200191508051906020019080838360005b838110156102a4578082015181840152602081019050610289565b50505050905090810190601f1680156102d15780820380516001836020036101000a031916815260200191505b5097505050505050505060405180910390f35b610350600480360360608110156102fa57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610bda565b005b34801561035e57600080fd5b50610367610bdf565b005b34801561037557600080fd5b506103b86004803603602081101561038c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c46565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156103fb5780820151818401526020810190506103e0565b505050509050019250505060405180910390f35b34801561041b57600080fd5b506104486004803603602081101561043257600080fd5b8101908080359060200190929190505050610d73565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561049657600080fd5b506104d9600480360360208110156104ad57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610da6565b005b3480156104e757600080fd5b5061051e600480360360408110156104fe57600080fd5b810190808035906020019092919080359060200190929190505050610dfb565b005b34801561052c57600080fd5b506105596004803603602081101561054357600080fd5b8101908080359060200190929190505050610ed5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156105a757600080fd5b506105ea600480360360208110156105be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610f12565b6040518082815260200191505060405180910390f35b34801561060c57600080fd5b50610615610f5b565b005b34801561062357600080fd5b506106dd6004803603602081101561063a57600080fd5b810190808035906020019064010000000081111561065757600080fd5b82018360208201111561066957600080fd5b8035906020019184600183028401116401000000008311171561068b57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061102b565b005b3480156106eb57600080fd5b506106f46110a1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561074257600080fd5b5061074b6110ca565b604051808215151515815260200191505060405180910390f35b34801561077157600080fd5b506107f36004803603604081101561078857600080fd5b8101908080359060200190929190803590602001906401000000008111156107af57600080fd5b8201836020820111156107c157600080fd5b803590602001918460018302840111640100000000831117156107e357600080fd5b9091929391929390505050611121565b005b34801561080157600080fd5b5061082e6004803603602081101561081857600080fd5b8101908080359060200190929190505050611207565b005b34801561083c57600080fd5b506108736004803603604081101561085357600080fd5b810190808035906020019092919080359060200190929190505050611222565b005b34801561088157600080fd5b506108c46004803603602081101561089857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611457565b005b5050565b60085434146108d857600080fd5b600481815481106108e557fe5b9060005260206000209060030201600201600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff1602179055505050565b6000600760009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663e98b7f4d836040518263ffffffff1660e01b8152600401808281526020019150506101406040518083038186803b1580156109a857600080fd5b505afa1580156109bc573d6000803e3d6000fd5b505050506040513d6101408110156109d357600080fd5b810190808051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190805190602001909291908051906020019092919050505090919293949596979850909192939495969750909192939495965090919293949550909192939450909192935090919250909150905080915050610ab883826040518060400160405280600581526020017f6b69747479000000000000000000000000000000000000000000000000000000815250611474565b505050565b60048181548110610aca57fe5b9060005260206000209060030201600091509050806000018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610b765780601f10610b4b57610100808354040283529160200191610b76565b820191906000526020600020905b815481529060010190602001808311610b5957829003601f168201915b5050505050908060010154908060020160009054906101000a900463ffffffff16908060020160049054906101000a900463ffffffff16908060020160089054906101000a900461ffff169080600201600a9054906101000a900461ffff16905086565b505050565b610be76110ca565b610bf057600080fd5b6000610bfa6110a1565b90508073ffffffffffffffffffffffffffffffffffffffff166108fc479081150290604051600060405180830381858888f19350505050158015610c42573d6000803e3d6000fd5b5050565b606080600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054604051908082528060200260200182016040528015610cb75781602001602082028038833980820191505090505b509050600080905060008090505b600480549050811015610d68578473ffffffffffffffffffffffffffffffffffffffff166005600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161415610d5b5780838381518110610d4657fe5b60200260200101818152505081806001019250505b8080600101915050610cc5565b508192505050919050565b60056020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b610dae6110ca565b610db757600080fd5b80600760006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6014828160048281548110610e0c57fe5b906000526020600020906003020160020160009054906101000a900463ffffffff1663ffffffff161015610e3f57600080fd5b836005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610eab57600080fd5b8360048681548110610eb957fe5b9060005260206000209060030201600101819055505050505050565b60006005600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b6000600660008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b610f636110ca565b610f6c57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541461107757600080fd5b600061108282611656565b90506064818161108e57fe5b068103905061109d82826116e4565b5050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600283816004828154811061113257fe5b906000526020600020906003020160020160009054906101000a900463ffffffff1663ffffffff16101561116557600080fd5b846005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146111d157600080fd5b8484600488815481106111e057fe5b906000526020600020906003020160000191906111fe929190611b47565b50505050505050565b61120f6110ca565b61121857600080fd5b8060088190555050565b816005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461128e57600080fd5b60006004848154811061129d57fe5b906000526020600020906003020190506000600484815481106112bc57fe5b9060005260206000209060030201905060006112d8606461196f565b9050600a5481116113d75782600201600881819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505082600201600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff1602179055505081600201600a81819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff160217905550506113d28683600101546040518060400160405280600681526020017f7a6f6d6269650000000000000000000000000000000000000000000000000000815250611474565b61144f565b82600201600a81819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505081600201600881819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505061144e836119fe565b5b505050505050565b61145f6110ca565b61146857600080fd5b61147181611a28565b50565b826005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146114e057600080fd5b6000600485815481106114ef57fe5b9060005260206000209060030201905061150881611b20565b61151157600080fd5b600254848161151c57fe5b06935060006002858360010154018161153157fe5b04905060405160200180807f6b69747479000000000000000000000000000000000000000000000000000000815250600501905060405160208183030381529060405280519060200120846040516020018082805190602001908083835b602083106115b2578051825260208201915060208101905060208303925061158f565b6001836020036101000a038019825116818451168082178552505050505050905001915050604051602081830303815290604052805190602001201415611606576063606482816115ff57fe5b0682030190505b6116456040518060400160405280600681526020017f4e6f4e616d650000000000000000000000000000000000000000000000000000815250826116e4565b61164e826119fe565b505050505050565b600080826040516020018082805190602001908083835b60208310611690578051825260208201915060208101905060208303925061166d565b6001836020036101000a0380198251168184511680821785525050505050509050019150506040516020818303038152906040528051906020012060001c905060025481816116db57fe5b06915050919050565b6000600160046040518060c00160405280868152602001858152602001600163ffffffff168152602001600354420163ffffffff168152602001600061ffff168152602001600061ffff16815250908060018154018082558091505090600182039060005260206000209060030201600090919290919091506000820151816000019080519060200190611779929190611bc7565b506020820151816001015560408201518160020160006101000a81548163ffffffff021916908363ffffffff16021790555060608201518160020160046101000a81548163ffffffff021916908363ffffffff16021790555060808201518160020160086101000a81548161ffff021916908361ffff16021790555060a082015181600201600a6101000a81548161ffff021916908361ffff1602179055505050039050336005600083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081548092919060010191905055507f88f026aacbbecc90c18411df4b1185fd8d9be2470f1962f192bf84a27d0704b78184846040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561192e578082015181840152602081019050611913565b50505050905090810190601f16801561195b5780820380516001836020036101000a031916815260200191505b5094505050505060405180910390a1505050565b6000600960008154809291906001019190505550814233600954604051602001808481526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140182815260200193505050506040516020818303038152906040528051906020012060001c816119f657fe5b069050919050565b60035442018160020160046101000a81548163ffffffff021916908363ffffffff16021790555050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415611a6257600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6000428260020160049054906101000a900463ffffffff1663ffffffff1611159050919050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611b8857803560ff1916838001178555611bb6565b82800160010185558215611bb6579182015b82811115611bb5578235825591602001919060010190611b9a565b5b509050611bc39190611c47565b5090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611c0857805160ff1916838001178555611c36565b82800160010185558215611c36579182015b82811115611c35578251825591602001919060010190611c1a565b5b509050611c439190611c47565b5090565b611c6991905b80821115611c65576000816000905550600101611c4d565b5090565b9056fea265627a7a72315820615744e711e334d6fd9854ed4cc4338eaaaf7898712f94bffa376bf7db8ba2fe64736f6c63430005100032",
+  "deployedBytecode": "0x60806040526004361061011f5760003560e01c80636352211e116100a05780638f32d59b116100645780638f32d59b14610736578063c39cbef114610765578063ccf670f8146107f5578063e1fa763814610830578063f2fde38b146108755761011f565b80636352211e1461052057806370a082311461059b578063715018a6146106005780637bff0a01146106175780638da5cb5b146106df5761011f565b80633ccfd60b116100e75780633ccfd60b146103525780634412e10414610369578063528b7b8f1461040f5780635f4623f11461048a5780635faf2880146104db5761011f565b8063095ea7b3146101245780630ce90ec21461017257806317a7f4cc146101a05780632052465e146101e557806323b872dd146102e4575b600080fd5b6101706004803603604081101561013a57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803590602001909291905050506108c6565b005b61019e6004803603602081101561018857600080fd5b81019080803590602001909291905050506108ca565b005b3480156101ac57600080fd5b506101e3600480360360408110156101c357600080fd5b810190808035906020019092919080359060200190929190505050610932565b005b3480156101f157600080fd5b5061021e6004803603602081101561020857600080fd5b8101908080359060200190929190505050610abd565b60405180806020018781526020018663ffffffff1663ffffffff1681526020018563ffffffff1663ffffffff1681526020018461ffff1661ffff1681526020018361ffff1661ffff168152602001828103825288818151815260200191508051906020019080838360005b838110156102a4578082015181840152602081019050610289565b50505050905090810190601f1680156102d15780820380516001836020036101000a031916815260200191505b5097505050505050505060405180910390f35b610350600480360360608110156102fa57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190803573ffffffffffffffffffffffffffffffffffffffff16906020019092919080359060200190929190505050610bda565b005b34801561035e57600080fd5b50610367610bdf565b005b34801561037557600080fd5b506103b86004803603602081101561038c57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610c46565b6040518080602001828103825283818151815260200191508051906020019060200280838360005b838110156103fb5780820151818401526020810190506103e0565b505050509050019250505060405180910390f35b34801561041b57600080fd5b506104486004803603602081101561043257600080fd5b8101908080359060200190929190505050610d73565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561049657600080fd5b506104d9600480360360208110156104ad57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610da6565b005b3480156104e757600080fd5b5061051e600480360360408110156104fe57600080fd5b810190808035906020019092919080359060200190929190505050610dfb565b005b34801561052c57600080fd5b506105596004803603602081101561054357600080fd5b8101908080359060200190929190505050610ed5565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156105a757600080fd5b506105ea600480360360208110156105be57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610f12565b6040518082815260200191505060405180910390f35b34801561060c57600080fd5b50610615610f5b565b005b34801561062357600080fd5b506106dd6004803603602081101561063a57600080fd5b810190808035906020019064010000000081111561065757600080fd5b82018360208201111561066957600080fd5b8035906020019184600183028401116401000000008311171561068b57600080fd5b91908080601f016020809104026020016040519081016040528093929190818152602001838380828437600081840152601f19601f82011690508083019250505050505050919291929050505061102b565b005b3480156106eb57600080fd5b506106f46110a1565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b34801561074257600080fd5b5061074b6110ca565b604051808215151515815260200191505060405180910390f35b34801561077157600080fd5b506107f36004803603604081101561078857600080fd5b8101908080359060200190929190803590602001906401000000008111156107af57600080fd5b8201836020820111156107c157600080fd5b803590602001918460018302840111640100000000831117156107e357600080fd5b9091929391929390505050611121565b005b34801561080157600080fd5b5061082e6004803603602081101561081857600080fd5b8101908080359060200190929190505050611207565b005b34801561083c57600080fd5b506108736004803603604081101561085357600080fd5b810190808035906020019092919080359060200190929190505050611222565b005b34801561088157600080fd5b506108c46004803603602081101561089857600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050611457565b005b5050565b60085434146108d857600080fd5b600481815481106108e557fe5b9060005260206000209060030201600201600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff1602179055505050565b6000600760009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1663e98b7f4d836040518263ffffffff1660e01b8152600401808281526020019150506101406040518083038186803b1580156109a857600080fd5b505afa1580156109bc573d6000803e3d6000fd5b505050506040513d6101408110156109d357600080fd5b810190808051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190805190602001909291908051906020019092919080519060200190929190805190602001909291908051906020019092919050505090919293949596979850909192939495969750909192939495965090919293949550909192939450909192935090919250909150905080915050610ab883826040518060400160405280600581526020017f6b69747479000000000000000000000000000000000000000000000000000000815250611474565b505050565b60048181548110610aca57fe5b9060005260206000209060030201600091509050806000018054600181600116156101000203166002900480601f016020809104026020016040519081016040528092919081815260200182805460018160011615610100020316600290048015610b765780601f10610b4b57610100808354040283529160200191610b76565b820191906000526020600020905b815481529060010190602001808311610b5957829003601f168201915b5050505050908060010154908060020160009054906101000a900463ffffffff16908060020160049054906101000a900463ffffffff16908060020160089054906101000a900461ffff169080600201600a9054906101000a900461ffff16905086565b505050565b610be76110ca565b610bf057600080fd5b6000610bfa6110a1565b90508073ffffffffffffffffffffffffffffffffffffffff166108fc479081150290604051600060405180830381858888f19350505050158015610c42573d6000803e3d6000fd5b5050565b606080600660008473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200190815260200160002054604051908082528060200260200182016040528015610cb75781602001602082028038833980820191505090505b509050600080905060008090505b600480549050811015610d68578473ffffffffffffffffffffffffffffffffffffffff166005600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff161415610d5b5780838381518110610d4657fe5b60200260200101818152505081806001019250505b8080600101915050610cc5565b508192505050919050565b60056020528060005260406000206000915054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b610dae6110ca565b610db757600080fd5b80600760006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6014828160048281548110610e0c57fe5b906000526020600020906003020160020160009054906101000a900463ffffffff1663ffffffff161015610e3f57600080fd5b836005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614610eab57600080fd5b8360048681548110610eb957fe5b9060005260206000209060030201600101819055505050505050565b60006005600083815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff169050919050565b6000600660008373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020549050919050565b610f636110ca565b610f6c57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a360008060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020541461107757600080fd5b600061108282611656565b90506064818161108e57fe5b068103905061109d82826116e4565b5050565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16905090565b60008060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614905090565b600283816004828154811061113257fe5b906000526020600020906003020160020160009054906101000a900463ffffffff1663ffffffff16101561116557600080fd5b846005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146111d157600080fd5b8484600488815481106111e057fe5b906000526020600020906003020160000191906111fe929190611b47565b50505050505050565b61120f6110ca565b61121857600080fd5b8060088190555050565b816005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461128e57600080fd5b60006004848154811061129d57fe5b906000526020600020906003020190506000600484815481106112bc57fe5b9060005260206000209060030201905060006112d8606461196f565b9050600a5481116113d75782600201600881819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505082600201600081819054906101000a900463ffffffff168092919060010191906101000a81548163ffffffff021916908363ffffffff1602179055505081600201600a81819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff160217905550506113d28683600101546040518060400160405280600681526020017f7a6f6d6269650000000000000000000000000000000000000000000000000000815250611474565b61144f565b82600201600a81819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505081600201600881819054906101000a900461ffff168092919060010191906101000a81548161ffff021916908361ffff1602179055505061144e836119fe565b5b505050505050565b61145f6110ca565b61146857600080fd5b61147181611a28565b50565b826005600082815260200190815260200160002060009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146114e057600080fd5b6000600485815481106114ef57fe5b9060005260206000209060030201905061150881611b20565b61151157600080fd5b600254848161151c57fe5b06935060006002858360010154018161153157fe5b04905060405160200180807f6b69747479000000000000000000000000000000000000000000000000000000815250600501905060405160208183030381529060405280519060200120846040516020018082805190602001908083835b602083106115b2578051825260208201915060208101905060208303925061158f565b6001836020036101000a038019825116818451168082178552505050505050905001915050604051602081830303815290604052805190602001201415611606576063606482816115ff57fe5b0682030190505b6116456040518060400160405280600681526020017f4e6f4e616d650000000000000000000000000000000000000000000000000000815250826116e4565b61164e826119fe565b505050505050565b600080826040516020018082805190602001908083835b60208310611690578051825260208201915060208101905060208303925061166d565b6001836020036101000a0380198251168184511680821785525050505050509050019150506040516020818303038152906040528051906020012060001c905060025481816116db57fe5b06915050919050565b6000600160046040518060c00160405280868152602001858152602001600163ffffffff168152602001600354420163ffffffff168152602001600061ffff168152602001600061ffff16815250908060018154018082558091505090600182039060005260206000209060030201600090919290919091506000820151816000019080519060200190611779929190611bc7565b506020820151816001015560408201518160020160006101000a81548163ffffffff021916908363ffffffff16021790555060608201518160020160046101000a81548163ffffffff021916908363ffffffff16021790555060808201518160020160086101000a81548161ffff021916908361ffff16021790555060a082015181600201600a6101000a81548161ffff021916908361ffff1602179055505050039050336005600083815260200190815260200160002060006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550600660003373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152602001600020600081548092919060010191905055507f88f026aacbbecc90c18411df4b1185fd8d9be2470f1962f192bf84a27d0704b78184846040518084815260200180602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561192e578082015181840152602081019050611913565b50505050905090810190601f16801561195b5780820380516001836020036101000a031916815260200191505b5094505050505060405180910390a1505050565b6000600960008154809291906001019190505550814233600954604051602001808481526020018373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1660601b815260140182815260200193505050506040516020818303038152906040528051906020012060001c816119f657fe5b069050919050565b60035442018160020160046101000a81548163ffffffff021916908363ffffffff16021790555050565b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415611a6257600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6000428260020160049054906101000a900463ffffffff1663ffffffff1611159050919050565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611b8857803560ff1916838001178555611bb6565b82800160010185558215611bb6579182015b82811115611bb5578235825591602001919060010190611b9a565b5b509050611bc39190611c47565b5090565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f10611c0857805160ff1916838001178555611c36565b82800160010185558215611c36579182015b82811115611c35578251825591602001919060010190611c1a565b5b509050611c439190611c47565b5090565b611c6991905b80821115611c65576000816000905550600101611c4d565b5090565b9056fea265627a7a72315820615744e711e334d6fd9854ed4cc4338eaaaf7898712f94bffa376bf7db8ba2fe64736f6c63430005100032",
+  "sourceMap": "91:481:6:-;;;185:2:3;168:19;;218:9;;212:2;:15;194:33;;254:6;234:26;;134:11:5;116:29;;130:1:2;113:18;;170:2;138:34;;581:10:1;572:6;;:19;;;;;;;;;;;;;;;;;;640:6;;;;;;;;;;;607:40;;636:1;607:40;;;;;;;;;;;;91:481:6;;;;;;",
+  "deployedSourceMap": "91:481:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;487:82;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;487:82:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;562:145:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;562:145:5;;;;;;;;;;;;;;;;;:::i;:::-;;1661:220:4;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1661:220:4;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1661:220:4;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;449:23:3;;8:9:-1;5:2;;;30:1;27;20:12;5:2;449:23:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;449:23:3;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;449:23:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;385:96:6;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;385:96:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;290:162:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;290:162:5;;;:::i;:::-;;1071:433;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1071:433:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1071:433:5;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;1071:433:5;;;;;;;;;;;;;;;;;481:46:3;;8:9:-1;5:2;;;30:1;27;20:12;5:2;481:46:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;481:46:3;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;662:134:4;;8:9:-1;5:2;;;30:1;27;20:12;5:2;662:134:4;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;662:134:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;900:163:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;900:163:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;900:163:5;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;266:113:6;;8:9:-1;5:2;;;30:1;27;20:12;5:2;266:113:6;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;266:113:6;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;146:114;;8:9:-1;5:2;;;30:1;27;20:12;5:2;146:114:6;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;146:114:6;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1454:146:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1454:146:1;;;:::i;:::-;;1085:257:3;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1085:257:3;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1085:257:3;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;1085:257:3;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;1085:257:3;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;1085:257:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;93:3;85:6;81:16;74:27;137:4;133:9;126:4;121:3;117:14;113:30;106:37;;169:3;161:6;157:16;147:26;;1085:257:3;;;;;;;;;;;;;;;:::i;:::-;;723:85:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;723:85:1;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1070:98;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1070:98:1;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;715:177:5;;8:9:-1;5:2;;;30:1;27;20:12;5:2;715:177:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;715:177:5;;;;;;;;;;;;;;;;;;;21:11:-1;8;5:28;2:2;;;46:1;43;36:12;2:2;715:177:5;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;715:177:5;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;715:177:5;;;;;;;;;;;;:::i;:::-;;460:94;;8:9:-1;5:2;;;30:1;27;20:12;5:2;460:94:5;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;460:94:5;;;;;;;;;;;;;;;;;:::i;:::-;;370:634:2;;8:9:-1;5:2;;;30:1;27;20:12;5:2;370:634:2;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;370:634:2;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;1777:115:1;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1777:115:1;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1777:115:1;;;;;;;;;;;;;;;;;;;:::i;:::-;;487:82:6;;;:::o;562:145:5:-;649:10;;636:9;:23;628:32;;;;;;673:7;681:9;673:18;;;;;;;;;;;;;;;;;;:24;;;:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;562:145;:::o;1661:220:4:-;1737:13;1783;;;;;;;;;;;:22;;;1806:8;1783:32;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;1783:32:4;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;1783:32:4;;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;1783:32:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1761:54;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1828:45;1844:9;1855:8;1828:45;;;;;;;;;;;;;;;;;:15;:45::i;:::-;1661:220;;;:::o;449:23:3:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;385:96:6:-;;;;:::o;290:162:5:-;947:9:1;:7;:9::i;:::-;939:18;;;;;;345:22:5;386:7;:5;:7::i;:::-;345:50;;406:6;:15;;:38;422:21;406:38;;;;;;;;;;;;;;;;;;;;;;;;8:9:-1;5:2;;;45:16;42:1;39;24:38;77:16;74:1;67:27;5:2;406:38:5;968:1:1;290:162:5:o;1071:433::-;1137:13;1168:20;1202:16;:24;1219:6;1202:24;;;;;;;;;;;;;;;;1191:36;;;;;;;;;;;;;;;;;;;;;;29:2:-1;21:6;17:15;117:4;105:10;97:6;88:34;148:4;140:6;136:17;126:27;;0:157;1191:36:5;;;;1168:59;;1238:12;1253:1;1238:16;;1272:6;1281:1;1272:10;;1267:204;1288:7;:14;;;;1284:1;:18;1267:204;;;1357:6;1337:26;;:13;:16;1351:1;1337:16;;;;;;;;;;;;;;;;;;;;;:26;;;1333:127;;;1415:1;1397:6;1404:7;1397:15;;;;;;;;;;;;;:19;;;;;1435:9;;;;;;;1333:127;1304:3;;;;;;;1267:204;;;;1490:6;1483:13;;;;1071:433;;;:::o;481:46:3:-;;;;;;;;;;;;;;;;;;;;;;:::o;662:134:4:-;947:9:1;:7;:9::i;:::-;939:18;;;;;;779:8:4;748:13;;:40;;;;;;;;;;;;;;;;;;662:134;:::o;900:163:5:-;969:2;973:9;255:6;227:7;235:9;227:18;;;;;;;;;;;;;;;;;;:24;;;;;;;;;;;;:34;;;;219:43;;;;;;996:9;609:13:4;:24;623:9;609:24;;;;;;;;;;;;;;;;;;;;;595:38;;:10;:38;;;587:47;;;;;;1048:7:5;1023;1031:9;1023:18;;;;;;;;;;;;;;;;;;:22;;:32;;;;273:1;900:163;;;;:::o;266:113:6:-;324:7;350:13;:23;364:8;350:23;;;;;;;;;;;;;;;;;;;;;343:30;;266:113;;;:::o;146:114::-;204:7;230:16;:24;247:6;230:24;;;;;;;;;;;;;;;;223:31;;146:114;;;:::o;1454:146:1:-;947:9;:7;:9::i;:::-;939:18;;;;;;1559:1;1522:40;;1543:6;;;;;;;;;;;1522:40;;;;;;;;;;;;1590:1;1573:6;;:19;;;;;;;;;;;;;;;;;;1454:146::o;1085:257:3:-;1197:1;1165:16;:28;1182:10;1165:28;;;;;;;;;;;;;;;;:33;1157:42;;;;;;1210:12;1225:25;1244:5;1225:18;:25::i;:::-;1210:40;;1291:3;1281:7;:13;;;;;;1271:7;:23;1261:33;;1305:29;1319:5;1326:7;1305:13;:29::i;:::-;1085:257;;:::o;723:85:1:-;761:7;794:6;;;;;;;;;;;787:13;;723:85;:::o;1070:98::-;1110:4;1154:6;;;;;;;;;;;1140:20;;:10;:20;;;1133:27;;1070:98;:::o;715:177:5:-;797:1;800:9;255:6;227:7;235:9;227:18;;;;;;;;;;;;;;;;;;:24;;;;;;;;;;;;:34;;;;219:43;;;;;;823:9;609:13:4;:24;623:9;609:24;;;;;;;;;;;;;;;;;;;;;595:38;;:10;:38;;;587:47;;;;;;876:8:5;;850:7;858:9;850:18;;;;;;;;;;;;;;;;;;:23;;:34;;;;;;;:::i;:::-;;273:1;715:177;;;;;:::o;460:94::-;947:9:1;:7;:9::i;:::-;939:18;;;;;;542:4:5;529:10;:17;;;;460:94;:::o;370:634:2:-;439:9;609:13:4;:24;623:9;609:24;;;;;;;;;;;;;;;;;;;;;595:38;;:10;:38;;;587:47;;;;;;466:23:2;492:7;500:9;492:18;;;;;;;;;;;;;;;;;;466:44;;521:26;550:7;558:9;550:18;;;;;;;;;;;;;;;;;;521:47;;581:9;593:12;601:3;593:7;:12::i;:::-;581:24;;630;;622:4;:32;618:379;;680:8;:17;;;:19;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;714:8;:14;;;:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;745:11;:21;;;:23;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;783:53;799:9;810:11;:15;;;783:53;;;;;;;;;;;;;;;;;:15;:53::i;:::-;618:379;;;887:8;:18;;;:20;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;922:11;:20;;;:22;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;959:26;976:8;959:16;:26::i;:::-;618:379;645:1:4;;;370:634:2;;;:::o;1777:115:1:-;947:9;:7;:9::i;:::-;939:18;;;;;;1856:28;1875:8;1856:18;:28::i;:::-;1777:115;:::o;1077:576:4:-;1180:9;609:13;:24;623:9;609:24;;;;;;;;;;;;;;;;;;;;;595:38;;:10;:38;;;587:47;;;;;;1207:23;1233:7;1241:9;1233:18;;;;;;;;;;;;;;;;;;1207:44;;1272:18;1281:8;1272;:18::i;:::-;1264:27;;;;;;1330:10;;1317;:23;;;;;;1304:36;;1353:11;1397:1;1383:10;1368:8;:12;;;:25;1367:31;;;;;;1353:45;;1466:25;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1466:25:4;;;1456:36;;;;;;1442:8;1425:26;;;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;1425:26:4;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1425:26:4;;;1415:37;;;;;;:77;1411:154;;;1551:2;1545:3;1536:6;:12;;;;;;1527:6;:21;:26;1518:35;;1411:154;1577:31;;;;;;;;;;;;;;;;;;1601:6;1577:13;:31::i;:::-;1619:26;1636:8;1619:16;:26::i;:::-;645:1;;1077:576;;;;:::o;891:186:3:-;961:4;983:9;1027:4;1010:22;;;;;;;;;;;;;;;36:153:-1;66:2;61:3;58:11;36:153;;182:3;176:10;171:3;164:23;98:2;93:3;89:12;82:19;;123:2;118:3;114:12;107:19;;148:2;143:3;139:12;132:19;;36:153;;;274:1;267:3;263:2;259:12;254:3;250:22;246:30;315:4;311:9;305:3;299:10;295:26;356:4;350:3;344:10;340:21;389:7;380;377:20;372:3;365:33;3:399;;;1010:22:3;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;1010:22:3;;;1000:33;;;;;;995:39;;983:51;;1059:10;;1052:4;:17;;;;;;1045:24;;;891:186;;;:::o;585:298::-;665:7;748:1;675:7;688:56;;;;;;;;695:5;688:56;;;;702:4;688:56;;;;708:1;688:56;;;;;;724:12;;718:3;:18;688:56;;;;;;739:1;688:56;;;;;;742:1;688:56;;;;;675:70;;39:1:-1;33:3;27:10;23:18;57:10;52:3;45:23;79:10;72:17;;0:93;675:70:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:74;665:84;;780:10;760:13;:17;774:2;760:17;;;;;;;;;;;;:30;;;;;;;;;;;;;;;;;;801:16;:28;818:10;801:28;;;;;;;;;;;;;;;;:30;;;;;;;;;;;;;849:26;859:2;863:5;870:4;849:26;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;99:1;94:3;90:11;84:18;80:1;75:3;71:11;64:39;52:2;49:1;45:10;40:15;;8:100;;;12:14;849:26:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;585:298;;;:::o;181:181:2:-;231:4;253:9;;:11;;;;;;;;;;;;;346:8;314:3;319:10;331:9;;297:44;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;49:4:-1;39:7;30;26:21;22:32;13:7;6:49;297:44:2;;;287:55;;;;;;282:61;;:72;;;;;;275:79;;181:181;;;:::o;804:129:4:-;912:12;;906:3;:18;879:7;:17;;;:46;;;;;;;;;;;;;;;;;;804:129;:::o;2042:193:1:-;2142:1;2122:22;;:8;:22;;;;2114:31;;;;;;2190:8;2161:38;;2182:6;;;;;;;;;;;2161:38;;;;;;;;;;;;2219:8;2210:6;;:17;;;;;;;;;;;;;;;;;;2042:193;:::o;941:128:4:-;1006:4;1057:3;1036:7;:17;;;;;;;;;;;;:24;;;;1028:33;;941:128;;;:::o;91:481:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity >=0.5.0 <0.6.0;\r\n\r\nimport \"./zombieattack.sol\";\r\nimport \"./erc721.sol\";\r\n\r\ncontract ZombieOwnership is ZombieAttack, ERC721\r\n{\r\n  function balanceOf(address _owner) external view returns (uint256)\r\n  {\r\n    return ownerZombieCount[_owner];\r\n  }\r\n\r\n  function ownerOf(uint256 _tokenId) external view returns (address)\r\n  {\r\n    return zombieToOwner[_tokenId];\r\n  }\r\n\r\n  function transferFrom(address _from, address _to, uint256 _tokenId) external payable\r\n  {\r\n\r\n  }\r\n\r\n  function approve(address _approved, uint256 _tokenId) external payable\r\n  {\r\n\r\n  }\r\n}\r\n",
+  "sourcePath": "D:/Dev/Projects/CryptoZombies/contracts/zombieownership.sol",
+  "ast": {
+    "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/zombieownership.sol",
+    "exportedSymbols": {
+      "ZombieOwnership": [
+        843
+      ]
+    },
+    "id": 844,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 794,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.5",
+          ".0",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:31:6"
+      },
+      {
+        "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/zombieattack.sol",
+        "file": "./zombieattack.sol",
+        "id": 795,
+        "nodeType": "ImportDirective",
+        "scope": 844,
+        "sourceUnit": 266,
+        "src": "35:28:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/erc721.sol",
+        "file": "./erc721.sol",
+        "id": 796,
+        "nodeType": "ImportDirective",
+        "scope": 844,
+        "sourceUnit": 49,
+        "src": "65:22:6",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 797,
+              "name": "ZombieAttack",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 265,
+              "src": "119:12:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ZombieAttack_$265",
+                "typeString": "contract ZombieAttack"
+              }
+            },
+            "id": 798,
+            "nodeType": "InheritanceSpecifier",
+            "src": "119:12:6"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 799,
+              "name": "ERC721",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 48,
+              "src": "133:6:6",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ERC721_$48",
+                "typeString": "contract ERC721"
+              }
+            },
+            "id": 800,
+            "nodeType": "InheritanceSpecifier",
+            "src": "133:6:6"
+          }
+        ],
+        "contractDependencies": [
+          48,
+          157,
+          265,
+          418,
+          611,
+          792
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 843,
+        "linearizedBaseContracts": [
+          843,
+          48,
+          265,
+          792,
+          611,
+          418,
+          157
+        ],
+        "name": "ZombieOwnership",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 811,
+              "nodeType": "Block",
+              "src": "216:44:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 807,
+                      "name": "ownerZombieCount",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 313,
+                      "src": "230:16:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_address_$_t_uint256_$",
+                        "typeString": "mapping(address => uint256)"
+                      }
+                    },
+                    "id": 809,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 808,
+                      "name": "_owner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 802,
+                      "src": "247:6:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "230:24:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 806,
+                  "id": 810,
+                  "nodeType": "Return",
+                  "src": "223:31:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 812,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 803,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 802,
+                  "name": "_owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 812,
+                  "src": "165:14:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 801,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "165:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "164:16:6"
+            },
+            "returnParameters": {
+              "id": 806,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 805,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 812,
+                  "src": "204:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 804,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "204:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "203:9:6"
+            },
+            "scope": 843,
+            "src": "146:114:6",
+            "stateMutability": "view",
+            "superFunction": 24,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 823,
+              "nodeType": "Block",
+              "src": "336:43:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 819,
+                      "name": "zombieToOwner",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 309,
+                      "src": "350:13:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_uint256_$_t_address_$",
+                        "typeString": "mapping(uint256 => address)"
+                      }
+                    },
+                    "id": 821,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 820,
+                      "name": "_tokenId",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 814,
+                      "src": "364:8:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "350:23:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 818,
+                  "id": 822,
+                  "nodeType": "Return",
+                  "src": "343:30:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 824,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "ownerOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 814,
+                  "name": "_tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 824,
+                  "src": "283:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 813,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "283:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "282:18:6"
+            },
+            "returnParameters": {
+              "id": 818,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 817,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 824,
+                  "src": "324:7:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 816,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "324:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "323:9:6"
+            },
+            "scope": 843,
+            "src": "266:113:6",
+            "stateMutability": "view",
+            "superFunction": 31,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 833,
+              "nodeType": "Block",
+              "src": "473:8:6",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 834,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferFrom",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 831,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 826,
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 834,
+                  "src": "407:13:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 825,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "407:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 828,
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 834,
+                  "src": "422:11:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 827,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "422:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 830,
+                  "name": "_tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 834,
+                  "src": "435:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 829,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "435:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "406:46:6"
+            },
+            "returnParameters": {
+              "id": 832,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "473:0:6"
+            },
+            "scope": 843,
+            "src": "385:96:6",
+            "stateMutability": "payable",
+            "superFunction": 40,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 841,
+              "nodeType": "Block",
+              "src": "561:8:6",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 842,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "approve",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 839,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 836,
+                  "name": "_approved",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 842,
+                  "src": "504:17:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 835,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "504:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 838,
+                  "name": "_tokenId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 842,
+                  "src": "523:16:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 837,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "523:7:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "503:37:6"
+            },
+            "returnParameters": {
+              "id": 840,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "561:0:6"
+            },
+            "scope": 843,
+            "src": "487:82:6",
+            "stateMutability": "payable",
+            "superFunction": 47,
+            "visibility": "external"
+          }
+        ],
+        "scope": 844,
+        "src": "91:481:6"
+      }
+    ],
+    "src": "0:574:6"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/zombieownership.sol",
+      "exportedSymbols": {
+        "ZombieOwnership": [
+          843
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            ">=",
+            "0.5",
+            ".0",
+            "<",
+            "0.6",
+            ".0"
+          ]
+        },
+        "id": 794,
+        "name": "PragmaDirective",
+        "src": "0:31:6"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 266,
+          "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/zombieattack.sol",
+          "file": "./zombieattack.sol",
+          "scope": 844,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 795,
+        "name": "ImportDirective",
+        "src": "35:28:6"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 49,
+          "absolutePath": "/D/Dev/Projects/CryptoZombies/contracts/erc721.sol",
+          "file": "./erc721.sol",
+          "scope": 844,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 796,
+        "name": "ImportDirective",
+        "src": "65:22:6"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            48,
+            157,
+            265,
+            418,
+            611,
+            792
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            843,
+            48,
+            265,
+            792,
+            611,
+            418,
+            157
+          ],
+          "name": "ZombieOwnership",
+          "scope": 844
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ZombieAttack",
+                  "referencedDeclaration": 265,
+                  "type": "contract ZombieAttack"
+                },
+                "id": 797,
+                "name": "UserDefinedTypeName",
+                "src": "119:12:6"
+              }
+            ],
+            "id": 798,
+            "name": "InheritanceSpecifier",
+            "src": "119:12:6"
+          },
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "ERC721",
+                  "referencedDeclaration": 48,
+                  "type": "contract ERC721"
+                },
+                "id": 799,
+                "name": "UserDefinedTypeName",
+                "src": "133:6:6"
+              }
+            ],
+            "id": 800,
+            "name": "InheritanceSpecifier",
+            "src": "133:6:6"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "balanceOf",
+              "scope": 843,
+              "stateMutability": "view",
+              "superFunction": 24,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_owner",
+                      "scope": 812,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 801,
+                        "name": "ElementaryTypeName",
+                        "src": "165:7:6"
+                      }
+                    ],
+                    "id": 802,
+                    "name": "VariableDeclaration",
+                    "src": "165:14:6"
+                  }
+                ],
+                "id": 803,
+                "name": "ParameterList",
+                "src": "164:16:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 812,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 804,
+                        "name": "ElementaryTypeName",
+                        "src": "204:7:6"
+                      }
+                    ],
+                    "id": 805,
+                    "name": "VariableDeclaration",
+                    "src": "204:7:6"
+                  }
+                ],
+                "id": 806,
+                "name": "ParameterList",
+                "src": "203:9:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 806
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 313,
+                              "type": "mapping(address => uint256)",
+                              "value": "ownerZombieCount"
+                            },
+                            "id": 807,
+                            "name": "Identifier",
+                            "src": "230:16:6"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 802,
+                              "type": "address",
+                              "value": "_owner"
+                            },
+                            "id": 808,
+                            "name": "Identifier",
+                            "src": "247:6:6"
+                          }
+                        ],
+                        "id": 809,
+                        "name": "IndexAccess",
+                        "src": "230:24:6"
+                      }
+                    ],
+                    "id": 810,
+                    "name": "Return",
+                    "src": "223:31:6"
+                  }
+                ],
+                "id": 811,
+                "name": "Block",
+                "src": "216:44:6"
+              }
+            ],
+            "id": 812,
+            "name": "FunctionDefinition",
+            "src": "146:114:6"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "ownerOf",
+              "scope": 843,
+              "stateMutability": "view",
+              "superFunction": 31,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenId",
+                      "scope": 824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 813,
+                        "name": "ElementaryTypeName",
+                        "src": "283:7:6"
+                      }
+                    ],
+                    "id": 814,
+                    "name": "VariableDeclaration",
+                    "src": "283:16:6"
+                  }
+                ],
+                "id": 815,
+                "name": "ParameterList",
+                "src": "282:18:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 824,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 816,
+                        "name": "ElementaryTypeName",
+                        "src": "324:7:6"
+                      }
+                    ],
+                    "id": 817,
+                    "name": "VariableDeclaration",
+                    "src": "324:7:6"
+                  }
+                ],
+                "id": 818,
+                "name": "ParameterList",
+                "src": "323:9:6"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 818
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 309,
+                              "type": "mapping(uint256 => address)",
+                              "value": "zombieToOwner"
+                            },
+                            "id": 819,
+                            "name": "Identifier",
+                            "src": "350:13:6"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 814,
+                              "type": "uint256",
+                              "value": "_tokenId"
+                            },
+                            "id": 820,
+                            "name": "Identifier",
+                            "src": "364:8:6"
+                          }
+                        ],
+                        "id": 821,
+                        "name": "IndexAccess",
+                        "src": "350:23:6"
+                      }
+                    ],
+                    "id": 822,
+                    "name": "Return",
+                    "src": "343:30:6"
+                  }
+                ],
+                "id": 823,
+                "name": "Block",
+                "src": "336:43:6"
+              }
+            ],
+            "id": 824,
+            "name": "FunctionDefinition",
+            "src": "266:113:6"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "transferFrom",
+              "scope": 843,
+              "stateMutability": "payable",
+              "superFunction": 40,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_from",
+                      "scope": 834,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 825,
+                        "name": "ElementaryTypeName",
+                        "src": "407:7:6"
+                      }
+                    ],
+                    "id": 826,
+                    "name": "VariableDeclaration",
+                    "src": "407:13:6"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_to",
+                      "scope": 834,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 827,
+                        "name": "ElementaryTypeName",
+                        "src": "422:7:6"
+                      }
+                    ],
+                    "id": 828,
+                    "name": "VariableDeclaration",
+                    "src": "422:11:6"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenId",
+                      "scope": 834,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 829,
+                        "name": "ElementaryTypeName",
+                        "src": "435:7:6"
+                      }
+                    ],
+                    "id": 830,
+                    "name": "VariableDeclaration",
+                    "src": "435:16:6"
+                  }
+                ],
+                "id": 831,
+                "name": "ParameterList",
+                "src": "406:46:6"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 832,
+                "name": "ParameterList",
+                "src": "473:0:6"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 833,
+                "name": "Block",
+                "src": "473:8:6"
+              }
+            ],
+            "id": 834,
+            "name": "FunctionDefinition",
+            "src": "385:96:6"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "approve",
+              "scope": 843,
+              "stateMutability": "payable",
+              "superFunction": 47,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_approved",
+                      "scope": 842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 835,
+                        "name": "ElementaryTypeName",
+                        "src": "504:7:6"
+                      }
+                    ],
+                    "id": 836,
+                    "name": "VariableDeclaration",
+                    "src": "504:17:6"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_tokenId",
+                      "scope": 842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 837,
+                        "name": "ElementaryTypeName",
+                        "src": "523:7:6"
+                      }
+                    ],
+                    "id": 838,
+                    "name": "VariableDeclaration",
+                    "src": "523:16:6"
+                  }
+                ],
+                "id": 839,
+                "name": "ParameterList",
+                "src": "503:37:6"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 840,
+                "name": "ParameterList",
+                "src": "561:0:6"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 841,
+                "name": "Block",
+                "src": "561:8:6"
+              }
+            ],
+            "id": 842,
+            "name": "FunctionDefinition",
+            "src": "487:82:6"
+          }
+        ],
+        "id": 843,
+        "name": "ContractDefinition",
+        "src": "91:481:6"
+      }
+    ],
+    "id": 844,
+    "name": "SourceUnit",
+    "src": "0:574:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-07-28T18:32:00.864Z",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "return": "true if `msg.sender` is the owner of the contract."
+      },
+      "owner()": {
+        "return": "the address of the owner."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing to ownership will leave the contract without an owner. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      }
+    }
+  }
+}
